@@ -1,9 +1,13 @@
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { GamesIndex } from "./GamesIndex";
 import { GamesNew } from "./GamesNew";
 import { GamesShow } from "./GamesShow";
 import { Modal } from "./Modal";
-import axios from "axios";
-import { useState, useEffect } from "react";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 export function Content() {
   const [games, setGames] = useState([]);
@@ -40,9 +44,15 @@ export function Content() {
   useEffect(handleIndexGames, []);
 
   return (
-    <main>
-      <GamesNew onCreateGame={handleCreateGame} />
-      <GamesIndex games={games} onShowGame={handleShowGame} />
+    <main className="container">
+      <Routes>
+        <Route path="" element={<GamesIndex games={games} onShowGame={handleShowGame} />} />
+        <Route path="/add-a-game" element={<GamesNew onCreateGame={handleCreateGame} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+      </Routes>
+
       <Modal show={isGamesShowVisible} onClose={handleClose}>
         <GamesShow game={currentGame} />
       </Modal>
