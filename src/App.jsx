@@ -1,21 +1,18 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+// import "./App.css";
 import { Header } from "./Header";
 import { Content } from "./Content";
 import { Footer } from "./Footer";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div>
-        <img src={viteLogo} className="logo" alt="Vite logo" />
-        <img src={reactLogo} className="logo react" alt="React logo" />
+    <div>
+      <BrowserRouter>
         <Header />
         <Content />
         <Footer />
-      </div>
-    </>
+      </BrowserRouter>
+    </div>
   );
 }
 
