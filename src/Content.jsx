@@ -68,7 +68,7 @@ export function Content() {
         />
         <Route path="games/:id" element={<GamesShowPage />} />
         <Route path="/add-a-game" element={<GamesNew onCreateGame={handleCreateGame} />} />
-        <Route path="/collection" element={<Collection onShowGame={handleShowGame} />} />
+        <Route path="/collection/:username" element={<Collection onShowGame={handleShowGame} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />

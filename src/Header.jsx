@@ -1,4 +1,12 @@
 import { Link } from "react-router-dom";
+import axios from "axios";
+
+const handleClick = (event) => {
+  event.preventDefault();
+  delete axios.defaults.headers.common["Authorization"];
+  localStorage.removeItem("jwt");
+  window.location.href = "/";
+};
 
 export function Header() {
   return (
@@ -39,7 +47,7 @@ export function Header() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to="/collection/">
+                    <Link className="dropdown-item" to={`/collection/${localStorage.username}`}>
                       My Games
                     </Link>
                   </li>
@@ -73,9 +81,9 @@ export function Header() {
                 </>
               ) : (
                 <li className="nav-item">
-                  <Link className="nav-link" to="/logout">
+                  <div className="nav-link" onClick={handleClick}>
                     Logout
-                  </Link>
+                  </div>
                 </li>
               )}
             </ul>
