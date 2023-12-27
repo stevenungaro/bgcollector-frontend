@@ -9,7 +9,7 @@ export function GamesShow(props) {
             <img id="modal-game-photo" src={props.game.image_url} />
             <p>Name: {props.game.game_name}</p>
             <p>Released: {props.game.release_year}</p>
-            <a href="">Go to game page</a>
+            <a href={`/games/${props.game.id}`}>Go to game page</a>
             <br></br>
             <a href={`https://boardgamegeek.com/boardgame/${props.game.bgg_id}`}>BGG ID: {props.game.bgg_id}</a>
           </div>

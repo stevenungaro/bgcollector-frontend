@@ -4,8 +4,21 @@ html {
 
 #game-photo {
   width: 200px;
+  height: 200px;
+  padding-bottom: 10px;
 }
 
 #modal-game-photo {
   height: 200px;
+  width: 200px;
+}
+
+#games-index-card {
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 450px;
+}
+
+#games-show-page-photo {
+  height: 400px;
 }

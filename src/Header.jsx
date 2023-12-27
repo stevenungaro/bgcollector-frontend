@@ -1,33 +1,14 @@
-import { Modal } from "./Modal";
-import { Signup } from "./Signup";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export function Header() {
-  // opens the modal
-  const handleSignupShow = () => {
-    setIsSignupVisible(true);
-  };
-
-  //closes modal
-  const handleClose = () => {
-    setIsSignupVisible(false);
-  };
-
-  const [isSignupVisible, setIsSignupVisible] = useState(false);
-
   return (
     <header>
-      <Modal show={isSignupVisible} onClose={handleClose}>
-        <Signup />
-      </Modal>
-
       {/* start bootstrap nav here */}
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to="/">
             BG Collector
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -43,12 +24,7 @@ export function Header() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/" className="nav-link active" aria-current="page">
-                  All Games
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/add-a-game" className="nav-link active" aria-current="page">
-                  Add Game
+                  Home
                 </Link>
               </li>
               <li className="nav-item dropdown">
@@ -63,7 +39,7 @@ export function Header() {
                 </a>
                 <ul className="dropdown-menu">
                   <li>
-                    <Link className="dropdown-item" to="/collections">
+                    <Link className="dropdown-item" to="/collection/">
                       My Games
                     </Link>
                   </li>
@@ -85,9 +61,9 @@ export function Header() {
               {localStorage.jwt === undefined ? (
                 <>
                   <li className="nav-item">
-                    <a className="nav-link" onClick={handleSignupShow}>
+                    <Link className="nav-link" to="/signup">
                       Signup
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/login">
@@ -103,6 +79,12 @@ export function Header() {
                 </li>
               )}
             </ul>
+            <form className="form-inline">
+              {/* <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> */}
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </nav>

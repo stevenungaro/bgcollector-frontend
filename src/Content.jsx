@@ -8,6 +8,8 @@ import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Collection } from "./Collection";
+import { GamesShowPage } from "./GamesShowPage";
 
 export function Content() {
   const [games, setGames] = useState([]);
@@ -30,6 +32,12 @@ export function Content() {
     });
   };
 
+  const handleAddToCollection = (game) => {
+    console.log("handleAddToCollection");
+    const params = { game_id: game.id };
+    axios.post(`http://localhost:3000/user_games.json`, params);
+  };
+
   const handleShowGame = (game) => {
     console.log("handleShowGame", game);
     setIsGamesShowVisible(true);
@@ -46,8 +54,21 @@ export function Content() {
   return (
     <main className="container">
       <Routes>
-        <Route path="" element={<GamesIndex games={games} onShowGame={handleShowGame} />} />
+        <Route
+          path=""
+          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+        />
+        <Route
+          path="/games"
+          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+        />
+        <Route
+          path="/home"
+          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+        />
+        <Route path="games/:id" element={<GamesShowPage />} />
         <Route path="/add-a-game" element={<GamesNew onCreateGame={handleCreateGame} />} />
+        <Route path="/collection" element={<Collection onShowGame={handleShowGame} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
