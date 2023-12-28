@@ -16,10 +16,32 @@ html {
 #games-index-card {
   padding: 20px;
   margin-bottom: 20px;
-  height: 450px;
+  height: 500px;
 }
 
 #games-show-page-photo {
   height: 400px;
 }
 
+#collection-card {
+  padding: 20px;
+  margin-bottom: 20px;
+  height: 500px;
+}
+
+/* #collection-card-image {
+  height: 150px;
+  width: 150px;
+} */
+
+#keanu {
+  max-width: 100%;
+}
+
+.games-h1 {
+  text-align: center;
+}
+
+#copyright {
+  text-align: center;
+}

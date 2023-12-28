@@ -38,6 +38,12 @@ export function Content() {
     axios.post(`http://localhost:3000/user_games.json`, params);
   };
 
+  const handleRemoveFromCollection = (user_game) => {
+    console.log("handleRemoveFromCollection");
+    const params = { id: user_game.id };
+    axios.delete(`http://localhost:3000/user_games/${params.id}.json`, params);
+  };
+
   const handleShowGame = (game) => {
     console.log("handleShowGame", game);
     setIsGamesShowVisible(true);
@@ -56,19 +62,43 @@ export function Content() {
       <Routes>
         <Route
           path=""
-          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+          element={
+            <GamesIndex
+              games={games}
+              onShowGame={handleShowGame}
+              onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}
+            />
+          }
         />
         <Route
           path="/games"
-          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+          element={
+            <GamesIndex
+              games={games}
+              onShowGame={handleShowGame}
+              onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}
+            />
+          }
         />
         <Route
           path="/home"
-          element={<GamesIndex games={games} onShowGame={handleShowGame} onAddToCollection={handleAddToCollection} />}
+          element={
+            <GamesIndex
+              games={games}
+              onShowGame={handleShowGame}
+              onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}
+            />
+          }
         />
         <Route path="games/:id" element={<GamesShowPage />} />
         <Route path="/add-a-game" element={<GamesNew onCreateGame={handleCreateGame} />} />
-        <Route path="/collection/:username" element={<Collection onShowGame={handleShowGame} />} />
+        <Route
+          path="/collection/:username"
+          element={<Collection onShowGame={handleShowGame} onRemoveFromCollection={handleRemoveFromCollection} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
