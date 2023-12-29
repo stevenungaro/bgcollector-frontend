@@ -7,7 +7,7 @@ export function GamesIndex(props) {
       <h1 className="games-h1">All games</h1>
 
       <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5">
-        {props.games.slice(0, 24).map((game) => (
+        {props.games.slice(0, 25).map((game) => (
           <div key={game.id} className="col">
             <div className="card" id="games-index-card">
               <img src={game.image_url} className="card-img-top img-fluid" />

@@ -70,6 +70,15 @@ export function Header() {
                       Logout
                     </Link>
                   </li>
+                  {localStorage.username === "admin" ? (
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/add-a-game">
+                        Add Games
+                      </Link>
+                    </li>
+                  ) : (
+                    <></>
+                  )}
                 </>
               )}
             </ul>
