@@ -1,31 +1,24 @@
 /* eslint-disable react/prop-types */
-export function GamesNew(props) {
-  const handleSubmit = (event) => {
+import axios from "axios";
+
+export function GamesNew() {
+  const handleCreateGame = (event) => {
     event.preventDefault();
-    const params = new FormData(event.target);
-    props.onCreateGame(params, () => event.target.reset());
+    const params = {};
+    const form = document.getElementById("createGameForm");
+    params.bgg_id = new FormData(form).get("bgg_id");
+    console.log("handleCreateGame", params);
+    axios.post("http://localhost:3000/games.json", params);
   };
 
   return (
     <div>
-      <h1>New Game</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          Name: <input name="game_name" type="text" />
-        </div>
-        <div>
-          Image Url: <input name="image_url" type="text" />
-        </div>
-        <div>
-          Release Year: <input name="release_year" type="text" />
-        </div>
-        <div>
-          Description: <input name="description" type="text" />
-        </div>
+      <h1>Enter Board Game Geek ID:</h1>
+      <form id="createGameForm" onSubmit={handleCreateGame}>
         <div>
           BGG ID: <input name="bgg_id" type="text" />
         </div>
-        <button type="submit">Create game</button>
+        <button type="submit">Add game to database</button>
       </form>
     </div>
   );

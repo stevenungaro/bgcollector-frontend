@@ -39,6 +39,7 @@ export function GamesShowPage() {
     params.game_id = game.id;
     console.log(params);
     axios.post(`http://localhost:3000/reviews.json`, params);
+    window.location.reload();
   };
 
   const handleUpdateReview = (event) => {

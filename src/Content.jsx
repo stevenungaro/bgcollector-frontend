@@ -24,14 +24,6 @@ export function Content() {
     });
   };
 
-  const handleCreateGame = (params, successCallback) => {
-    console.log("handleCreateGame", params);
-    axios.post("http://localhost:3000/games.json", params).then((response) => {
-      setGames([...games, response.data]);
-      successCallback;
-    });
-  };
-
   const handleAddToCollection = (game) => {
     console.log("handleAddToCollection");
     const params = { game_id: game.id };
@@ -94,7 +86,7 @@ export function Content() {
           }
         />
         <Route path="games/:id" element={<GamesShowPage />} />
-        <Route path="/add-a-game" element={<GamesNew onCreateGame={handleCreateGame} />} />
+        <Route path="/add-a-game" element={<GamesNew />} />
         <Route
           path="/collection/:username"
           element={<Collection onShowGame={handleShowGame} onRemoveFromCollection={handleRemoveFromCollection} />}
