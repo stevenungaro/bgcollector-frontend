@@ -20,7 +20,7 @@ export function Content() {
     console.log("handleIndexGames");
     axios.get("http://localhost:3000/games.json").then((response) => {
       console.log(response.data);
-      setGames(response.data);
+      setGames(response.data.slice(0, 24));
     });
   };
 
@@ -85,8 +85,15 @@ export function Content() {
             />
           }
         />
-        <Route path="games/:id" element={<GamesShowPage onAddToCollection={handleAddToCollection}
-              onRemoveFromCollection={handleRemoveFromCollection}/>} />
+        <Route
+          path="games/:id"
+          element={
+            <GamesShowPage
+              onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}
+            />
+          }
+        />
         <Route path="/add-a-game" element={<GamesNew />} />
         <Route
           path="/collection/:username"

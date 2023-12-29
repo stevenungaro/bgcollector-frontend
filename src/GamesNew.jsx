@@ -11,7 +11,22 @@ export function GamesNew() {
     axios.post("http://localhost:3000/games.json", params);
   };
 
+  // const pageContent = () => {
+  //   return (
+  //     <div>
+  //       <h1>Enter Board Game Geek ID:</h1>
+  //       <form id="createGameForm" onSubmit={handleCreateGame}>
+  //         <div>
+  //           BGG ID: <input name="bgg_id" type="text" />
+  //         </div>
+  //         <button type="submit">Add game to database</button>
+  //       </form>
+  //     </div>
+  //   );
+  // };
+
   return (
+    // <>{pageContent()}</>;
     <div>
       <h1>Enter Board Game Geek ID:</h1>
       <form id="createGameForm" onSubmit={handleCreateGame}>
