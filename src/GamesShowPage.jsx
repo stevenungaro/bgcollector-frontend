@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export function GamesShowPage() {
+export function GamesShowPage(props) {
   const [game, setGame] = useState({});
   const [reviews, setReviews] = useState([]);
   const [userReview, setUserReview] = useState({});
@@ -72,6 +73,9 @@ export function GamesShowPage() {
         {game.game_name} ({game.release_year})
       </h2>
       <img id="games-show-page-photo" src={game.image_url} />
+      <button className="btn btn-success" onClick={() => props.onAddToCollection(game)}>
+        Add to collection
+      </button>
       <br />
       <a href={`https://boardgamegeek.com/boardgame/${game.bgg_id}`}>BGG Game Page</a>
       <br />

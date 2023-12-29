@@ -85,7 +85,8 @@ export function Content() {
             />
           }
         />
-        <Route path="games/:id" element={<GamesShowPage />} />
+        <Route path="games/:id" element={<GamesShowPage onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}/>} />
         <Route path="/add-a-game" element={<GamesNew />} />
         <Route
           path="/collection/:username"
